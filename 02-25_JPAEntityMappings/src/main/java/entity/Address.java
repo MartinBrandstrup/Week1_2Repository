@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
@@ -17,7 +18,8 @@ import javax.persistence.OneToOne;
  * @author frede
  */
 @Entity
-public class Address implements Serializable {
+public class Address implements Serializable
+{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -25,40 +27,56 @@ public class Address implements Serializable {
     private Integer id;
     private String street;
     private String city;
-    @OneToOne(mappedBy = "address")
     private Customer customer;
-    
 
-    public String getStreet() {
+    public Customer getCustomer()
+    {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer)
+    {
+        this.customer = customer;
+    }
+
+    public String getStreet()
+    {
         return street;
     }
 
-    public void setStreet(String street) {
+    public void setStreet(String street)
+    {
         this.street = street;
     }
 
-    public String getCity() {
+    public String getCity()
+    {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(String city)
+    {
         this.city = city;
     }
 
-    public Address(String street, String city) {
+    public Address(String street, String city)
+    {
         this.street = street;
         this.city = city;
     }
 
-    public Address() {
+    public Address()
+    {
     }
 
-    public Integer getId() {
+    public Integer getId()
+    {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Integer id)
+    {
         this.id = id;
     }
-    
+
 }

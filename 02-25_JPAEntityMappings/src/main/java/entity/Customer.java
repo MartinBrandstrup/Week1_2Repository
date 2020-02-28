@@ -6,10 +6,14 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -25,21 +29,37 @@ public class Customer implements Serializable {
     private Integer id;
     private String firstName;
     private String lastName;
-    @OneToOne
-    private Address address; 
+    
+    @OneToMany
+    private List<Address> addresses = new ArrayList();
+//    private Address address; 
 
-    public Address getAddress() {
-        return address;
+//    public Address getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(Address address) {
+//        this.address = address;
+////        address.setCustomer(this);
+//    }
+
+    public List<Address> getAddresses()
+    {
+        return addresses;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddresses(List<Address> addresses)
+    {
+        this.addresses = addresses;
     }
+    
+    
 
-    public Customer(String firstName, String lastName, Address address) {
+    public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
+        this.addresses = addresses;
+//        this.address = address;
     }
 
     public Customer() {
