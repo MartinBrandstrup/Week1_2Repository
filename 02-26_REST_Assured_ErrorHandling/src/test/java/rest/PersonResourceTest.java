@@ -104,4 +104,16 @@ public class PersonResourceTest
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("msg", equalTo("Hello World"));
     }
+    
+//    @Test
+//    public void idTest() throws Exception
+//    {
+//        Integer id = temp.getId();
+//        given()
+//                .contentType("application/json")
+//                .get("/person/" + id).then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("firstName", equalTo(temp.getFirstName()));
+//    }
 }

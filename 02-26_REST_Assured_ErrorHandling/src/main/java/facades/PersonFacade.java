@@ -1,6 +1,7 @@
 package facades;
 
 import dtos.PersonDTO;
+import dtos.PersonsDTO;
 import entities.Person;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -114,21 +115,42 @@ public class PersonFacade implements IPersonFacade
     }
 
     @Override
-    public List<PersonDTO> getAllPersons()
+//    public List<PersonDTO> getAllPersons()
+//    {
+//        EntityManager em = getEntityManager();
+//        try
+//        {
+//            List<PersonDTO> personDTOList = new ArrayList<>();
+//            TypedQuery<Person> query
+//                    = em.createQuery("SELECT p FROM Person p", Person.class);
+//
+//            for (Person p : query.getResultList())
+//            {
+//                personDTOList.add(new PersonDTO(p));
+//            }
+//
+//            return personDTOList;
+//        }
+//        catch (Exception ex)
+//        {
+//            System.out.println("Operation getAllPersons failed.");
+//            ex.printStackTrace();
+//            return null;
+//        }
+//        finally
+//        {
+//            em.close();
+//        }
+//    }
+    
+    public PersonsDTO getAllPersons()
     {
         EntityManager em = getEntityManager();
         try
         {
-            List<PersonDTO> personDTOList = new ArrayList<>();
             TypedQuery<Person> query
                     = em.createQuery("SELECT p FROM Person p", Person.class);
-
-            for (Person p : query.getResultList())
-            {
-                personDTOList.add(new PersonDTO(p));
-            }
-
-            return personDTOList;
+            return new PersonsDTO(query.getResultList());
         }
         catch (Exception ex)
         {

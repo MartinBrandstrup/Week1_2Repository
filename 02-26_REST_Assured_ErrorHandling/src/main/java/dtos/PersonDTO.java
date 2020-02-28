@@ -25,6 +25,13 @@ public class PersonDTO
         this.phone = p.getPhone();
     }
 
+    public PersonDTO(String fn, String ln, String phone)
+    {
+        this.firstName = fn;
+        this.lastName = ln;
+        this.phone = phone;
+    }
+
     public Integer getId()
     {
         return id;

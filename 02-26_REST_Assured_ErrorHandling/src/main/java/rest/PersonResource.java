@@ -3,6 +3,7 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.PersonDTO;
+import dtos.PersonsDTO;
 import utils.EMF_Creator;
 import facades.PersonFacade;
 import java.util.List;
@@ -86,10 +87,11 @@ public class PersonResource
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllPersons()
     {
-        List<PersonDTO> pDTOList = FACADE.getAllPersons();
-        if (pDTOList != null)
+//        List<PersonDTO> pDTOList = FACADE.getAllPersons();
+        PersonsDTO psDTO = FACADE.getAllPersons();
+        if (psDTO != null)
         {
-            return GSON.toJson(pDTOList);
+            return GSON.toJson(psDTO);
         }
         else
         {
